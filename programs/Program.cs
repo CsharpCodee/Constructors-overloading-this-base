@@ -4,74 +4,54 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Practic10._5
+namespace Practic10._4
 {
-    class Animal
+    class Point
     {
-        private string name;
+        private double x;
+        private double y;
 
-        public string Name
+        public double X
         {
-            get { return name; }
-            set { name = value; }
+            get { return x; }
+            set { x = value; }
         }
-        public Animal(string name)
+        public double Y
         {
-            this.name = name;
-        }
-
-        public void Speak()
-        {
-            Console.WriteLine($"{name} издаёт звук.");
-        }
-    }
-
-    class Cat:Animal
-    {
-        private int lives;
-
-        public int Lives
-        {
-            get { return lives; }
-            set { lives = (value >= 1 && value <= 9) ? value : 0; }
+            get { return y; }
+            set { y = value; }
         }
 
-        public Cat(int lives, string name) : base(name)
+        public Point(double x, double y)
         {
-            this.lives = lives;
-            this.Name = name;
+            this.x = x;
+            this.y = y;
+        }
+        public Point(double value)
+        {
+            this.x = value;
+            this.y = value;
+        }
+        public Point()
+        {
+            this.x = 0;
+            this.y = 0;
         }
 
-        public Cat(string name) : base(name)
+        public void Show()
         {
-            this.Name = name;
-            this.lives = 9;
+            Console.WriteLine($"Точка: ({x}, {y})");
         }
-
-        public void Meow()
-        {
-            if (lives >= 1)
-            {
-                lives -= 1;
-                Console.WriteLine($"{Name} мяукнул, осталось жизней: {lives}.");
-            }
-            else
-            {
-                Console.WriteLine($"Недостаточнно жизней.");
-            }
-        }
-
         static void Main(string[] args)
         {
-            Cat cat1 = new Cat(6, "Dril");
-            cat1.Speak();
-            cat1.Meow();
-            cat1.Meow();
+            Point a = new Point(3.5, 5.2);
+            a.Show();
 
-            Cat cat2 = new Cat("Блиня");
-            cat2.Speak();
-            cat2.Meow();
+            Point b = new Point(6.1);
+            b.Show();
 
+            Point c = new Point();
+            c.Show();
 
         }
     }
