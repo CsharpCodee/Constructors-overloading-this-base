@@ -1,58 +1,59 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Practic10._4
+namespace Practic10
 {
-    class Point
+    class Book
     {
-        private double x;
-        private double y;
+        private string title;
+        private int pages;
 
-        public double X
+        public string Title
         {
-            get { return x; }
-            set { x = value; }
+            get { return title; }
+            set { title = value; }
         }
-        public double Y
+        public int Pages
         {
-            get { return y; }
-            set { y = value; }
-        }
-
-        public Point(double x, double y)
-        {
-            this.x = x;
-            this.y = y;
-        }
-        public Point(double value)
-        {
-            this.x = value;
-            this.y = value;
-        }
-        public Point()
-        {
-            this.x = 0;
-            this.y = 0;
+            get { return pages; }
+            set
+            {
+                if (value > 0 && value <= 5000)
+                { pages = value; }
+                else
+                { Console.WriteLine("Страниц должно быть от 1 до 5000!"); }
+            }
         }
 
-        public void Show()
+        public Book(string title, int pages)
         {
-            Console.WriteLine($"Точка: ({x}, {y})");
+            this.title = title;
+            Pages = pages;
+        }
+        public Book(string title)
+        {
+            this.title = title;
+            this.pages = 100;
+        }
+        public Book()
+        {
+            this.title = "Без названия";
+            this.pages = 1;
+        }
+
+        public void Read()
+        {
+            Console.WriteLine($"Читаю книгу {title}, страниц: {pages}.");
         }
         static void Main(string[] args)
         {
-            Point a = new Point(3.5, 5.2);
-            a.Show();
+            Book book = new Book("Мастер и Маргарита", 0);
+            book.Read();
 
-            Point b = new Point(6.1);
-            b.Show();
+            Book book1 = new Book("Маленький принц");
+            book1.Read();
 
-            Point c = new Point();
-            c.Show();
-
+            Book book2 = new Book();
+            book2.Read();
         }
     }
 }
